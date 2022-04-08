@@ -7,4 +7,3 @@ type: Opaque
 stringData:
   db-user: {{ .Values.odmdbsecret.db_user }}
   db-password: {{ .Values.odmdbsecret.db_password }}
-  
