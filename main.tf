@@ -13,20 +13,20 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
-  values_content = {
-    "cp4ba" = {        
-          namespace = var.namespace
-          channel             = var.channel
-          source              = var.catalog
-          sourceNamespace     = var.catalog_namespace
-          }  
-    "odmdbsecret"={
+values_content = {
+  "cp4ba" = {        
+        namespace = var.namespace
+        channel             = var.channel
+        source              = var.catalog
+        sourceNamespace     = var.catalog_namespace
+        }  
+  "odmdbsecret"={
         namespace= var.namespace
         db_user= var.db_user
         db_password= var.db_password
     } 
   values_file = "values-${var.server_name}.yaml"  
-  }
+}
 
 
 module setup_clis {
