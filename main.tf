@@ -1,7 +1,8 @@
 locals {
-  name          = "my-module"
+  name          = "cp-odm"
   bin_dir       = module.setup_clis.bin_dir
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
+  chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
   values_content = {
   }
@@ -12,13 +13,30 @@ locals {
   layer_config = var.gitops_config[local.layer]
 }
 
+  values_content = {
+    "cp4ba" = {        
+          namespace = var.namespace
+          channel             = var.channel
+          source              = var.catalog
+          sourceNamespace     = var.catalog_namespace
+          }
+
+    values_file = "values-${var.server_name}.yaml"  
+    "odmdbsecret"={
+        namespace: var.namespace
+        db_user : var.db_user
+        db_password: var.db_password
+    } 
+  }
+
+
 module setup_clis {
   source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
 }
 
 resource null_resource create_yaml {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/create-yaml.sh '${local.name}' '${local.yaml_dir}'"
+    command = "${path.module}/scripts/create-yaml.sh '${local.chart_dir}' '${local.yaml_dir}'"
 
     environment = {
       VALUES_CONTENT = yamlencode(local.values_content)

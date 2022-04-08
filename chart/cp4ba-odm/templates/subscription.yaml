@@ -1,0 +1,116 @@
+
+apiVersion: icp4a.ibm.com/v1
+kind: ICP4ACluster
+metadata: 
+  labels: 
+    app.kubernetes.io/instance: ibm-dba
+    app.kubernetes.io/managed-by: ibm-dba
+    app.kubernetes.io/name: ibm-dba
+    release: "21.0.3"
+  name: icp4adeploy
+  namespace: {{ .Values.cp4ba.namespace }}
+spec: 
+  datasource_configuration: 
+    dc_odm_datasource: 
+      database_servername: {{ .Values.cp4ba.db_server }}
+      dc_common_database_instance_secret: ibm-dba-odm-db-secret
+      dc_common_database_name: {{ .Values.cp4ba.odm_db_name }}
+      dc_common_database_port: {{ .Values.cp4ba.odm_db_port }}
+      dc_common_ssl_enabled: false
+      dc_database_type: {{ .Values.cp4ba.odm_db_type }}
+      dc_ssl_secret_name: {{ .Values.cp4ba.odm_db_secret }}
+  ibm_license: "yes"
+  odm_configuration: 
+    customization: 
+      authSecretRef: ~
+      bai_kafka_topic: ~
+      trusted_certificate_list: ~
+    debug: false
+    decisionCenter: 
+      customlibPvc: ~
+      disableAllAuthenticatedUser: false
+      enabled: true
+      jvmOptionsRef: ~
+      loggingRef: ~
+      persistenceLocale: en_US
+      replicaCount: 1
+      resources: 
+        limits: 
+          cpu: 2
+          ephemeral-storage: 500Mi
+          memory: 4096Mi
+        requests: 
+          cpu: 500m
+          ephemeral-storage: 50Mi
+          memory: 1500Mi
+      tagOrDigest: ~
+    decisionRunner: 
+      enabled: true
+      jvmOptionsRef: ~
+      loggingRef: ~
+      replicaCount: 1
+      resources: 
+        limits: 
+          cpu: 2
+          ephemeral-storage: 500Mi
+          memory: 4096Mi
+        requests: 
+          cpu: 500m
+          ephemeral-storage: 50Mi
+          memory: 512Mi
+      tagOrDigest: ~
+    decisionServerConsole: 
+      description: ~
+      jvmOptionsRef: ~
+      loggingRef: ~
+      resources: 
+        limits: 
+          cpu: 2
+          ephemeral-storage: 500Mi
+          memory: 1024Mi
+        requests: 
+          cpu: 500m
+          ephemeral-storage: 50Mi
+          memory: 512Mi
+      tagOrDigest: ~
+      title: ~
+    decisionServerRuntime: 
+      enabled: true
+      jvmOptionsRef: ~
+      loggingRef: ~
+      replicaCount: 1
+      resources: 
+        limits: 
+          cpu: 2
+          ephemeral-storage: 500Mi
+          memory: 4096Mi
+        requests: 
+          cpu: 500m
+          ephemeral-storage: 50Mi
+          memory: 512Mi
+      tagOrDigest: ~
+      webConfigRef: ~
+      xuConfigRef: ~
+    externalCustomDatabase: 
+      datasourceRef: ~
+      driverPvc: ~
+    image: 
+      pullPolicy: IfNotPresent
+      repository: {{ .Values.cp4ba.odm_image_repository }}
+      tag: {{ .Values.cp4ba.odm_image_tag }}
+    livenessProbe: 
+      failureThreshold: 50
+      initialDelaySeconds: 400
+      periodSeconds: 10
+      timeoutSeconds: 5
+    readinessProbe: 
+      failureThreshold: 90
+      initialDelaySeconds: 5
+      periodSeconds: 5
+      timeoutSeconds: 5
+    version: {{ .Values.cp4ba.odm_image_version }}
+  shared_configuration: 
+    sc_deployment_context: CP4A
+    sc_deployment_patterns: decisions
+    sc_deployment_platform: ~
+    sc_optional_components: ~

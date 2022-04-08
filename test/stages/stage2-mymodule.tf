@@ -1,4 +1,4 @@
-/*module "gitops_module" {
+module "cp-odm" {
   source = "./module"
 
   gitops_config = module.gitops.gitops_config
@@ -7,4 +7,3 @@
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
 }
-*/
