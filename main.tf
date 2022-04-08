@@ -4,16 +4,12 @@ locals {
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
   chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
-  values_content = {
-  }
   layer = "services"
   type  = "base"
   application_branch = "main"
   namespace = var.namespace
   layer_config = var.gitops_config[local.layer]
-}
-
-values_content = {
+  values_content = {
   "cp4ba" = {        
         namespace = var.namespace
         channel             = var.channel
@@ -26,7 +22,10 @@ values_content = {
         db_password= var.db_password
     } 
   values_file = "values-${var.server_name}.yaml"  
+  }
+
 }
+
 
 
 module setup_clis {
