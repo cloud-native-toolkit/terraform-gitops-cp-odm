@@ -19,14 +19,13 @@ locals {
           channel             = var.channel
           source              = var.catalog
           sourceNamespace     = var.catalog_namespace
-          }
-
-    values_file = "values-${var.server_name}.yaml"  
+          }  
     "odmdbsecret"={
-        namespace: var.namespace
-        db_user : var.db_user
-        db_password: var.db_password
+        namespace= var.namespace
+        db_user= var.db_user
+        db_password= var.db_password
     } 
+  values_file = "values-${var.server_name}.yaml"  
   }
 
 
