@@ -18,7 +18,7 @@ locals {
         odm_db_type= var.odm_db_type
         odm_image_repository= var.odm_image_repository
         odm_image_tag= var.odm_image_tag
-        odm_image_version= var.odm_im
+        odm_image_version= var.odm_image_version
         }  
   "odmdbsecret"={
         namespace= var.namespace
