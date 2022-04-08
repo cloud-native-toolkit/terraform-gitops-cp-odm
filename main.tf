@@ -1,7 +1,7 @@
 locals {
   name          = "cp-odm"
   bin_dir       = module.setup_clis.bin_dir
-  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
+  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart"
   chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
   layer = "services"
@@ -18,7 +18,7 @@ locals {
         odm_db_type= var.odm_db_type
         odm_image_repository= var.odm_image_repository
         odm_image_tag= var.odm_image_tag
-        odm_image_version= var.odm_image_version
+        odm_image_version= var.odm_im
         }  
   "odmdbsecret"={
         namespace= var.namespace
