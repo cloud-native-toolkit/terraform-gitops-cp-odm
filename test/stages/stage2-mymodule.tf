@@ -1,4 +1,4 @@
-module "gitops_module" {
+/*module "gitops_module" {
   source = "./module"
 
   gitops_config = module.gitops.gitops_config
@@ -7,3 +7,4 @@ module "gitops_module" {
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
 }
+*/

@@ -20,7 +20,7 @@ variable "bootstrap_prefix" {
 
 variable "namespace" {
   type        = string
-  description = "Namespace for tools" 
+  description = "Namespace for tools"   
 }
 
 variable "cluster_name" {
