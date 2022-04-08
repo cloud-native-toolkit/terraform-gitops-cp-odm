@@ -15,4 +15,4 @@ cp -R "${CHART_DIR}/cp4ba-odm"/* "${DEST_DIR}/cp4ba-odm/"
 cp -R "${CHART_DIR}/db-secret"/* "${DEST_DIR}/db-secret"
 echo "**** Copied ${CHART_DIR} to   ${DEST_DIR}  ****"
 
-find "${DEST_DIR}" -name "*"
+find "${DEST_DIR}" -name "*"  
