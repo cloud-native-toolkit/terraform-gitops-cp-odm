@@ -11,14 +11,14 @@ locals {
   layer_config = var.gitops_config[local.layer]
   values_content = {
   "cp4ba" = {        
-        namespace= gitops-cp-odm
+        namespace= var.namespace
         db_server= "161.202.168.37"
-        odm_db_nam= odmdb
-        odm_db_port= 50000
-        odm_db_type= db2
-        odm_image_repository= cp.icr.io/cp/cp4a/odm
-        odm_image_tag= "21.0.3-IF002"
-        odm_image_version= "21.0.3"
+        odm_db_name= var.odm_db_name
+        odm_db_port= var.odm_db_port
+        odm_db_type= var.odm_db_type
+        odm_image_repository= var.odm_image_repository
+        odm_image_tag= var.odm_image_tag
+        odm_image_version= var.odm_image_version
         }  
   "odmdbsecret"={
         namespace= var.namespace
