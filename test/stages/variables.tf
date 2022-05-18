@@ -137,7 +137,7 @@ variable "ldapPassword" {
   description = "The namespace where the application should be deployed"
   default = "P@ssw0rd"
 }
-
+/*
 variable "login_token" {
   type        = string
   
@@ -146,3 +146,4 @@ variable "ibmcloud_api_key" {
   type        = string
   
 }
+*/
