@@ -71,7 +71,7 @@ variable "namespace" {
 variable "kubeseal_cert" {
   type        = string
   description = "The certificate/public key used to encrypt the sealed secrets"
-  default     = ""
+  #default     = ""
 }
 
 variable "server_name" {
