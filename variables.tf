@@ -84,6 +84,22 @@ variable "db_server" {
   description = "Hostname of the database server for ODM"
   default = "161.202.168.37"
 }
+
+variable "cp_entitlement_key" {
+  default = ""
+}
+variable "ldapUsername" {
+  type        = string
+  description = "Database User"
+  default = "cn=root"
+}
+
+variable "ldapPassword" {
+  type        = string
+  description = "The namespace where the application should be deployed"
+  default = "P@ssw0rd"
+}
+
 variable "odm_db_name" {
   type        = string
   description = "ODM Database Name"
@@ -123,4 +139,10 @@ variable "db_password" {
   type        = string
   description = "The namespace where the application should be deployed"
   default = "P@ssw0rd"
+}
+
+variable "cp4ba_operator_namesapce"{
+  type        = string
+  description = "The namespace where the application should be deployed"
+  default=""
 }

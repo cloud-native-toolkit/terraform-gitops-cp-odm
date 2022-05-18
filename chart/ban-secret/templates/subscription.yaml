@@ -1,0 +1,15 @@
+kind: Secret
+apiVersion: v1
+metadata:
+  name: ibm-ban-secret
+  namespace: {{ .Values.odmdbsecret.namespace }}
+data:
+  appLoginPassword: {{ .Values.odmdbsecret.appLoginPassword }}  #k1Bhc3N3MHJklA==
+  appLoginUsername: {{ .Values.odmdbsecret.appLoginUsername }}  #k3A4YWRtaW6U
+  jMailPassword: {{ .Values.odmdbsecret.jMailPassword }} #UGFzc3cwcmQ=
+  jMailUsername: {{ .Values.odmdbsecret.jMailUsername }} #cDhhZG1pbg==
+  keystorePassword: {{ .Values.odmdbsecret.db_user }} #UEBzc3cwcmQ=
+  ltpaPassword: {{ .Values.odmdbsecret.db_user }}  #UEBzc3cwcmQ=
+  navigatorDBPassword: {{ .Values.odmdbsecret.navigatorDBPassword }}  #UEBzc3cwcmQ=
+  navigatorDBUsername: {{ .Values.odmdbsecret.navigatorDBUsername }}  #ZGIyaW5zdDE=
+type: Opaque

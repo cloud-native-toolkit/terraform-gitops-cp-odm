@@ -2,15 +2,17 @@
 variable cluster_username { 
   type        = string
   description = "The username for AWS access"
+  default     = ""
 }
 
 variable "cluster_password" {
   type        = string
   description = "The password for AWS access"
+  default     = ""
 }
 
 variable "server_url" {
-  type        = string
+  type   = string
 }
 
 variable "bootstrap_prefix" {
@@ -33,6 +35,7 @@ variable "cluster_name" {
 variable "cluster_type" {
   type        = string
   description = "The type of cluster that should be created (openshift or kubernetes)"
+  default     = ""
 }
 
 variable "cluster_exists" {
@@ -75,6 +78,7 @@ variable "kubeseal_namespace" {
 }
 
 variable "cp_entitlement_key" {
+  default = ""
 }
 variable "db_server" {
   type        = string
@@ -120,4 +124,25 @@ variable "db_password" {
   type        = string
   description = "The namespace where the application should be deployed"
   default = "P@ssw0rd"
+}
+
+variable "ldapUsername" {
+  type        = string
+  description = "Database User"
+  default = "root"
+}
+
+variable "ldapPassword" {
+  type        = string
+  description = "The namespace where the application should be deployed"
+  default = "P@ssw0rd"
+}
+
+variable "login_token" {
+  type        = string
+  
+}
+variable "ibmcloud_api_key" {
+  type        = string
+  
 }

@@ -1,7 +1,8 @@
-
 apiVersion: icp4a.ibm.com/v1
 kind: ICP4ACluster
 metadata: 
+  annotations:
+    argocd.argoproj.io/sync-wave: "15"
   labels: 
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
@@ -10,107 +11,71 @@ metadata:
   name: icp4adeploy
   namespace: {{ .Values.cp4ba.namespace }}
 spec: 
+  appVersion: "21.0.3"
+  bai_configuration: ~
   datasource_configuration: 
+    dc_icn_datasource: 
+      database_name: ICNDB
+      database_port: "50000"
+      database_servername: "161.202.168.37"
+      dc_common_icn_datasource_name: ECMClientDS
+      dc_database_type: db2
     dc_odm_datasource: 
+      dc_odm_datasource: 
       database_servername: {{ .Values.cp4ba.db_server }}
       dc_common_database_instance_secret: ibm-dba-odm-db-secret
       dc_common_database_name: {{ .Values.cp4ba.odm_db_name }}
-      dc_common_database_port: {{ .Values.cp4ba.odm_db_port }}
+      dc_common_database_port: "{{ .Values.cp4ba.odm_db_port }}"
       dc_common_ssl_enabled: false
       dc_database_type: {{ .Values.cp4ba.odm_db_type }}
       dc_ssl_secret_name: {{ .Values.cp4ba.odm_db_secret }}
-  ibm_license: "yes"
+  ibm_license: accept
+  ldap_configuration: 
+    lc_bind_secret: ldap-bind-secret
+    lc_ldap_base_dn: "o=ibm,c=us"
+    lc_ldap_group_base_dn: "o=ibm,c=us"
+    lc_ldap_group_display_name_attr: cn
+    lc_ldap_group_member_id_map: "*:cn"
+    lc_ldap_group_membership_search_filter: (&(cn=%v)(objectclass=person))
+    lc_ldap_group_name_attribute: "*:cn"
+    lc_ldap_port: "389"
+    lc_ldap_server: "161.202.168.37"
+    lc_ldap_ssl_enabled: false
+    #lc_ldap_ssl_secret_name: <Required>
+    lc_ldap_user_display_name_attr: cn
+    lc_ldap_user_name_attribute: cn
+    lc_selected_ldap_type: "IBM Security Directory Server"
+    tds: 
+      lc_group_filter: (&(cn=%v)(|(objectclass=groupofnames)(objectclass=groupofuniquenames)(objectclass=groupofurls)))
+      lc_user_filter: (&(cn=%v)(objectclass=person))
   odm_configuration: 
-    customization: 
-      authSecretRef: ~
-      bai_kafka_topic: ~
-      trusted_certificate_list: ~
-    debug: false
     decisionCenter: 
-      customlibPvc: ~
-      disableAllAuthenticatedUser: false
       enabled: true
-      jvmOptionsRef: ~
-      loggingRef: ~
-      persistenceLocale: en_US
-      replicaCount: 1
-      resources: 
-        limits: 
-          cpu: 2
-          ephemeral-storage: 500Mi
-          memory: 4096Mi
-        requests: 
-          cpu: 500m
-          ephemeral-storage: 50Mi
-          memory: 1500Mi
-      tagOrDigest: ~
     decisionRunner: 
       enabled: true
-      jvmOptionsRef: ~
-      loggingRef: ~
-      replicaCount: 1
-      resources: 
-        limits: 
-          cpu: 2
-          ephemeral-storage: 500Mi
-          memory: 4096Mi
-        requests: 
-          cpu: 500m
-          ephemeral-storage: 50Mi
-          memory: 512Mi
-      tagOrDigest: ~
-    decisionServerConsole: 
-      description: ~
-      jvmOptionsRef: ~
-      loggingRef: ~
-      resources: 
-        limits: 
-          cpu: 2
-          ephemeral-storage: 500Mi
-          memory: 1024Mi
-        requests: 
-          cpu: 500m
-          ephemeral-storage: 50Mi
-          memory: 512Mi
-      tagOrDigest: ~
-      title: ~
     decisionServerRuntime: 
       enabled: true
-      jvmOptionsRef: ~
-      loggingRef: ~
-      replicaCount: 1
-      resources: 
-        limits: 
-          cpu: 2
-          ephemeral-storage: 500Mi
-          memory: 4096Mi
-        requests: 
-          cpu: 500m
-          ephemeral-storage: 50Mi
-          memory: 512Mi
-      tagOrDigest: ~
-      webConfigRef: ~
-      xuConfigRef: ~
-    externalCustomDatabase: 
-      datasourceRef: ~
-      driverPvc: ~
-    image: 
-      pullPolicy: IfNotPresent
-      repository: {{ .Values.cp4ba.odm_image_repository }}
-      tag: {{ .Values.cp4ba.odm_image_tag }}
-    livenessProbe: 
-      failureThreshold: 50
-      initialDelaySeconds: 400
-      periodSeconds: 10
-      timeoutSeconds: 5
-    readinessProbe: 
-      failureThreshold: 90
-      initialDelaySeconds: 5
-      periodSeconds: 5
-      timeoutSeconds: 5
-    version: {{ .Values.cp4ba.odm_image_version }}
   shared_configuration: 
+    deployment_profile_size: small
+    image_pull_secrets: 
+      - admin.registrykey
+    #root_ca_secret: icp4a-root-ca
+    sc_cpe_limited_storage: false
+    sc_deployment_baw_license: non-production
     sc_deployment_context: CP4A
-    sc_deployment_patterns: decisions
-    sc_deployment_platform: ~
-    sc_optional_components: ~
+    sc_deployment_fncm_license: non-production
+    sc_deployment_license: non-production
+    sc_deployment_patterns: "foundation,decisions"
+    sc_deployment_platform: ROKS
+    sc_deployment_profile_size: small
+    sc_deployment_type: Production
+    sc_image_repository: cp.icr.io
+    sc_ingress_enable: false
+    #sc_ingress_tls_secret_name: <Required>
+    sc_optional_components: "bai,decisionCenter,decisionRunner,decisionServerRuntime"
+    storage_configuration: 
+      sc_block_storage_classname: ibmc-block-retain-gold
+      sc_fast_file_storage_classname: cp4a-file-retain-gold-gid
+      sc_medium_file_storage_classname: cp4a-file-retain-silver-gid
+      sc_slow_file_storage_classname: cp4a-file-retain-bronze-gid
+    trusted_certificate_list: []

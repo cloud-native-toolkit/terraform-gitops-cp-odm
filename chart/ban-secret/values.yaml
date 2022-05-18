@@ -1,0 +1,9 @@
+odmdbsecret:
+ namespace: gitops-cp-odm
+ navigatorDBUsername : db2inst1
+ navigatorDBPassword: P@ssw0rd
+ ltpaPassword: P@ssw0rd
+ appLoginUsername: p8admin
+ appLoginPassword: Passw0rd
+ jMailUsername: p8admin
+ jMailPassword: Passw0rd
