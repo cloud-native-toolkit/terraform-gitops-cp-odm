@@ -15,9 +15,15 @@ cp -R "${CHART_DIR}/cp4ba-odm"/* "${DEST_DIR}/cp4ba-odm/"
 cp -R "${CHART_DIR}/db-secret"/* "${DEST_DIR}/db-secret"
 echo "**** Copied ${CHART_DIR} to   ${DEST_DIR}  ****"
 
+<<<<<<< Updated upstream
 find "${DEST_DIR}" -name "*"  
 if [[ -n "${VALUES_CONTENT}" ]]; then
   echo "${VALUES_CONTENT}" > "${DEST_DIR}/cp4ba-odm/values.yaml"
   echo "${VALUES_CONTENT}" > "${DEST_DIR}/db-secret/values.yaml"
   echo "Copied the custom values to the values.yaml file ${VALUES_CONTENT}"
 fi
+=======
+find "${DEST_DIR}" -name "*"
+
+#test
+>>>>>>> Stashed changes
