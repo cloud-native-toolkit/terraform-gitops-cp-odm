@@ -1,4 +1,4 @@
-name: gitops-cp-odm
+name: cp-odm
 type: gitops
 description: Module to populate a gitops repo with the resources to provision cp-odm
 tags:
