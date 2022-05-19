@@ -72,10 +72,10 @@ spec:
     sc_image_repository: cp.icr.io
     sc_ingress_enable: false
     #sc_ingress_tls_secret_name: <Required>
-    sc_optional_components: "decisionCenter,decisionRunner,decisionServerRuntime"
-   # storage_configuration: 
-    #  sc_block_storage_classname: ibmc-block-retain-gold
+    sc_optional_components: "bai,decisionCenter,decisionRunner,decisionServerRuntime"
+    #storage_configuration: 
+     # sc_block_storage_classname: ibmc-block-retain-gold
      # sc_fast_file_storage_classname: cp4a-file-retain-gold-gid
      # sc_medium_file_storage_classname: cp4a-file-retain-silver-gid
-    #  sc_slow_file_storage_classname: cp4a-file-retain-bronze-gid
+     # sc_slow_file_storage_classname: cp4a-file-retain-bronze-gid
     trusted_certificate_list: []
