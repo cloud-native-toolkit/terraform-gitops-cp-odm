@@ -24,6 +24,8 @@ variable "namespace" {
   type        = string
   description = "Namespace for tools" 
   default ="cp-odm"
+  #default ="odm-inst"
+
 }
 
 variable "cluster_name" {
