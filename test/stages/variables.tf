@@ -23,7 +23,7 @@ variable "bootstrap_prefix" {
 variable "namespace" {
   type        = string
   description = "Namespace for tools" 
-  default ="odm-inst"
+  default ="cp-odm"
 }
 
 variable "cluster_name" {
