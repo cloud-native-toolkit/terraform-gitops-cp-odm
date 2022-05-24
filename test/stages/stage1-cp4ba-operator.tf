@@ -1,4 +1,4 @@
-module "gitops_iaf_operator" {
+module "gitops_cb4ba_operator" {
    source = "github.com/cloud-native-toolkit/terraform-gitops-cp4ba-operator"
 
   gitops_config = module.gitops.gitops_config

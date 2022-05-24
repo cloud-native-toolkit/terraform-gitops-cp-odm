@@ -16,3 +16,4 @@ resource null_resource write_outputs {
     }
   }
 }
+
