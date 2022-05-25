@@ -40,22 +40,6 @@ locals {
 
 }
 
-
-#module cp4ba-custom-imagepullsecret {
- # source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret"
-
-  # gitops_config = var.gitops_config
-  # git_credentials = var.git_credentials
-  # server_name = var.server_name
-  # kubeseal_cert = var.kubeseal_cert
-  # namespace = var.namespace
-  # docker_username = "cp"
-  # docker_password = var.cp_entitlement_key
-  # docker_server   = "cp.icr.io"
-  # secret_name     = "admin.registrykey"
- #}
-
-
 module setup_clis {
   source = "github.com/cloud-native-toolkit/terraform-util-clis.git"
 }
