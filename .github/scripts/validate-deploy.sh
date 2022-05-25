@@ -69,6 +69,11 @@ if [[ $count -eq 20 ]]; then
   exit 1
 fi
 
+#### Temporary sleep to validate deployment manually
+count=0
+echo "Sleeping for 5 minutes after finding the subscription to manually verify"
+sleep 600
+
 kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
 cd ..
