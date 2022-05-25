@@ -11,6 +11,11 @@ variable "cluster_password" {
   default     = ""
 }
 
+variable "ibmcloud_api_key" {
+  type        = string
+  description = "The api key for IBM Cloud access"
+}
+
 variable "server_url" {
   type   = string
 }
@@ -138,6 +143,23 @@ variable "ldapPassword" {
   type        = string
   description = "The namespace where the application should be deployed"
   default = "P@ssw0rd"
+}
+
+variable "docker_username" {
+  type        = string
+  default="cp"
+  description = "docker-username"
+}
+
+variable "docker_server" {
+  type        = string
+  default="cp.icr.io"
+  description = "docker-server"
+}
+variable "registry_key_name" {
+  type        = string
+  default="admin.registrykey"
+  description = "registry_key_name"  
 }
 /*
 variable "login_token" {
