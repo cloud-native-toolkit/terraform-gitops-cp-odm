@@ -29,12 +29,12 @@ fi
 export KUBECONFIG=$(cat .kubeconfig)
 NAMESPACE=$(cat .namespace)
 COMPONENT_NAME=$(jq -r '.name // "cp-odm"' gitops-output.json)
-BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
+#BRANCH=$(jq -r '.branch // "main"' gitops-output.json)
 SERVER_NAME=$(jq -r '.server_name // "default"' gitops-output.json)
 LAYER=$(jq -r '.layer_dir // "2-services"' gitops-output.json)
 TYPE=$(jq -r '.type // "base"' gitops-output.json)
 #COMPONENT_NAME="cp-odm"
-#BRANCH="dev-branch"
+BRANCH="dev-branch"
 #SERVER_NAME="default"
 #TYPE="base"
 
@@ -82,19 +82,20 @@ else
   sleep 30
 fi
 
-DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
-count=0
-until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
-  echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
-  count=$((count + 1))
-  sleep 15
-done
+#DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
+#count=0
+#until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
+ # echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
+ # count=$((count + 1))
+ # sleep 15
+#done
 
-if [[ $count -eq 20 ]]; then
-  echo "Timed out waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
-  kubectl get all -n "${NAMESPACE}"
-  exit 1
-fi
+#if [[ $count -eq 20 ]]; then
+ # echo "Timed out waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
+ # kubectl get all -n "${NAMESPACE}"
+ # exit 1
+#fi
+
 
 ## Check if the admin.registrykey is there 
 count=0
@@ -120,6 +121,14 @@ until kubectl get secret icp4a-root-ca -n "${NAMESPACE}" || [[ $count -eq 30 ]];
   echo "Waiting for secret icp4a-root-ca in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
   sleep 40
+done
+
+## Check if the configmaps is there 
+count=0
+until kubectl get configmaps icp4adeploy-gitops-cp-odm-access-info -n "${NAMESPACE}" || [[ $count -eq 30 ]]; do
+  echo "Waiting for configmaps icp4adeploy-gitops-cp-odm-access-info in ${NAMESPACE} COUNTER $count" 
+  count=$((count + 1))
+  sleep 20
 done
 
 #### Temporary sleep to validate deployment manually
