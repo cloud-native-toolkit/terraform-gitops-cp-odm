@@ -130,7 +130,6 @@ until kubectl get subs -n "${NAMESPACE}" |grep "${SUBSNAME}" || [[ $count -eq 20
   echo "Waiting for Subscription/${SUBSNAME} in ${NAMESPACE}"
   count=$((count + 1))
   sleep 15
-  exit 1
 done
 
 if [[ $count -eq 20 ]]; then
@@ -144,7 +143,6 @@ until kubectl get configmaps icp4adeploy-gitops-cp-odm-access-info -n "${NAMESPA
   echo "Waiting for configmaps icp4adeploy-gitops-cp-odm-access-info in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
   sleep 40
-  exit 1
 done
 
 if [[ $count -eq 30 ]]; then
