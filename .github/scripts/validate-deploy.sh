@@ -117,10 +117,10 @@ done
 
 ## Check if the icp4a-root-ca is there 
 count=0
-until kubectl get secret icp4a-root-ca -n "${NAMESPACE}" || [[ $count -eq 30 ]]; do
+until kubectl get secret icp4a-root-ca -n "${NAMESPACE}" || [[ $count -eq 40 ]]; do
   echo "Waiting for secret icp4a-root-ca in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
-  sleep 40
+  sleep 60
 done
 
 ## Check if the configmaps is there 
@@ -128,7 +128,7 @@ count=0
 until kubectl get configmaps icp4adeploy-gitops-cp-odm-access-info -n "${NAMESPACE}" || [[ $count -eq 30 ]]; do
   echo "Waiting for configmaps icp4adeploy-gitops-cp-odm-access-info in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
-  sleep 20
+  sleep 40
 done
 
 #### Temporary sleep to validate deployment manually
