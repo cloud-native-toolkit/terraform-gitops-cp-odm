@@ -155,6 +155,7 @@ count=0
 echo "Sleeping for 10 minutes after finding the subscription to manually verify"
 sleep 600
 
+
 #kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
 cd ..
