@@ -21,13 +21,17 @@ locals {
         odm_db_name= var.odm_db_name
         odm_db_port= var.odm_db_port
         odm_db_type= var.odm_db_type
-        storageclass_block: var.storageclass_block
-        storageclass_fast: var.storageclass_fast
-        storageclass_medium: var.storageclass_medium
-        storageclass_slow: var.storageclass_slow
+        #storageclass_block: var.storageclass_block
+        #storageclass_fast: var.storageclass_fast
+        #storageclass_medium: var.storageclass_medium
+        #storageclass_slow: var.storageclass_slow
         odm_image_repository= var.odm_image_repository
         odm_image_tag= var.odm_image_tag
         odm_image_version= var.odm_image_version
+        storageclass_block: "ibmc-vpc-block-metro-retain-10iops-tier"
+        storageclass_fast: "portworx-db2-rwx-sc"
+        storageclass_medium: "portworx-db2-rwx-sc"
+        storageclass_slow: "portworx-db2-rwx-sc"
         }  
   "odmdbsecret"={
         namespace= var.namespace
