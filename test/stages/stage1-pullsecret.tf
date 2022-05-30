@@ -1,16 +1,3 @@
-/*module cp4ba-custom-imagepullsecret {
-  source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret"
-  gitops_config = module.gitops.gitops_config
-  git_credentials = module.gitops.git_credentials
-  server_name = module.gitops.server_name
-  namespace = module.gitops_namespace.name
-  kubeseal_cert = module.gitops.sealed_secrets_cert
-  docker_server   = "cp.icr.io"
-  docker_username = "cp"
-  docker_password = var.cp_entitlement_key
-  secret_name     = "admin.registrykey"
-}*/
-
 module "gitops_pull_secret" {
   source = "github.com/cloud-native-toolkit/terraform-gitops-pull-secret.git"
 

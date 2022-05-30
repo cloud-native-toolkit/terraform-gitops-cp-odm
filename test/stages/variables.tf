@@ -121,23 +121,27 @@ variable "db_user" {
   type        = string
   description = "Database User"
   default = "db2inst1"
+  sensitive   = true
 }
 variable "db_password" {
   type        = string
   description = "The namespace where the application should be deployed"
   default = "P@ssw0rd"
+  sensitive   = true
 }
 
 variable "ldapUsername" {
   type        = string
   description = "Database User"
-  default = "root"
+  default = "Y249cm9vdA=="
+  sensitive   = true
 }
 
 variable "ldapPassword" {
   type        = string
   description = "The namespace where the application should be deployed"
-  default = "P@ssw0rd"
+  default = "UEBzc3cwcmQ="
+  sensitive   = true
 }
 
 variable "docker_username" {
