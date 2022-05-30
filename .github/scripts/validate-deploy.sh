@@ -158,6 +158,7 @@ sleep 600
 
 #kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
+
 cd ..
 rm -rf .testrepo
 
