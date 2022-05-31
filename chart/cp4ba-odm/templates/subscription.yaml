@@ -55,7 +55,7 @@ spec:
    lc_ldap_group_membership_search_filter: (|(&(objectclass=groupofnames)(member={0}))(&(objectclass=groupofuniquenames)(uniquemember={0})))
    lc_ldap_group_name_attribute: "*:cn"
    lc_ldap_port: "389"
-   lc_ldap_server: {{ .Values.cp4ba.db_server }}
+   lc_ldap_server: "161.202.168.37"
    lc_ldap_ssl_enabled: true
     #lc_ldap_ssl_secret_name: <Required>
    lc_ldap_user_display_name_attr: uid
