@@ -2,7 +2,7 @@ apiVersion: icp4a.ibm.com/v1
 kind: ICP4ACluster
 metadata: 
   annotations:
-    argocd.argoproj.io/sync-wave: "15"
+    argocd.argoproj.io/sync-wave: "-5"
   labels: 
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
@@ -75,6 +75,7 @@ spec:
     deployment_profile_size: small
     image_pull_secrets: 
       - admin.registrykey
+      - ibm-entitlement-key
     root_ca_secret: icp4a-root-ca
     sc_cpe_limited_storage: false
     sc_deployment_baw_license: non-production
