@@ -139,8 +139,8 @@ fi
 
 ## Check if the configmaps is there 
 count=0
-until kubectl get configmaps icp4adeploy-gitops-cp-odm-access-info -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
-  echo "Waiting for configmaps icp4adeploy-gitops-cp-odm-access-info in ${NAMESPACE} COUNTER $count" 
+until kubectl get configmaps icp4adeploy-cp4ba-access-info -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
+  echo "Waiting for configmaps icp4adeploy-cp4ba-access-info in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
   sleep 180
 done
