@@ -110,7 +110,7 @@ variable "odm_image_repository" {
 variable "odm_image_tag" {
   type        = string
   description = "Image Tag"
-  default = "21.0.3-IF002"
+  default = "21.0.3-IF009"
 }
 variable "odm_image_version" {
   type        = string
