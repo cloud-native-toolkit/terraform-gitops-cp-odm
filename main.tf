@@ -191,4 +191,3 @@ resource null_resource setup_gitops_ldap {
   }
 
 }
-
