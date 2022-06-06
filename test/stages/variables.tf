@@ -160,7 +160,7 @@ variable "registry_key_name" {
   default="admin.registrykey"
   description = "registry_key_name"  
 }
-/*
+
 variable "login_token" {
   type        = string
   
@@ -169,7 +169,7 @@ variable "ibmcloud_api_key" {
   type        = string
   
 }
-*/
+
 
 variable "storageclass_fast" {
   type        = string
