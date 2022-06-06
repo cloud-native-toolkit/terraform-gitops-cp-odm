@@ -72,7 +72,7 @@ resource null_resource setup_gitops_operator {
     #name = local.name
     name = local.name
     namespace = var.namespace
-    yaml_dir = local.odm_yaml_dir
+    yaml_dir = local.operator_yaml_dir
     server_name = var.server_name
     layer = "infrastructure"
     type = local.type
