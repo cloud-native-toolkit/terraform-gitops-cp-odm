@@ -24,7 +24,7 @@ locals {
         odm_image_repository= var.odm_image_repository
         odm_image_tag= var.odm_image_tag
         odm_image_version= var.odm_image_version
-        storageclass_block: "ibmc-vpc-block-metro-retain-10iops-tier"
+        storageclass_block: "ibmc-vpc-block-10iops-tier"
         storageclass_fast: "portworx-db2-rwx-sc"
         storageclass_medium: "portworx-db2-rwx-sc"
         storageclass_slow: "portworx-db2-rwx-sc"
