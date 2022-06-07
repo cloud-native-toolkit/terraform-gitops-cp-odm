@@ -137,6 +137,19 @@ if [[ $count -eq 20 ]]; then
   exit 1
 fi
 
+## Check if the foundation-iaf-automationbase-ab-ss-ca is there 
+count=0
+until kubectl get secret foundation-iaf-automationbase-ab-ss-ca -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
+  echo "Waiting for secret foundation-iaf-automationbase-ab-ss-ca in ${NAMESPACE} COUNTER $count" 
+  count=$((count + 1))
+  sleep 15
+done
+
+if [[ $count -eq 20 ]]; then
+  echo "Timed out waiting for foundation-iaf-automationbase-ab-ss-ca in ${NAMESPACE}"
+  exit 1
+fi
+
 ## Check if the configmaps is there 
 count=0
 until kubectl get configmaps icp4adeploy-cp4ba-access-info -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
