@@ -150,6 +150,7 @@ if [[ $count -eq 20 ]]; then
   exit 1
 fi
 
+
 ## Check if the configmaps is there 
 count=0
 until kubectl get configmaps icp4adeploy-cp4ba-access-info -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
