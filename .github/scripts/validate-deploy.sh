@@ -162,7 +162,7 @@ done
 #### Temporary sleep to validate deployment manually
 count=0
 echo "Sleeping for 10 minutes after finding the subscription to manually verify"
-sleep 600
+sleep 1200
 
 
 #kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
