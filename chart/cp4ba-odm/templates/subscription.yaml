@@ -96,4 +96,4 @@ spec:
       sc_medium_file_storage_classname: {{ .Values.cp4ba.storageclass_medium}}
       sc_slow_file_storage_classname: {{ .Values.cp4ba.storageclass_slow}}
     trusted_certificate_list: []
-
+    
