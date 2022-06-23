@@ -139,7 +139,7 @@ fi
 
 ## Check if the foundation-iaf-automationbase-ab-ss-ca is there 
 count=0
-until kubectl get secret foundation-iaf-automationbase-ab-ss-ca -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
+until kubectl get secret foundation-iaf-automationbase-ab-ss-ca -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
   echo "Waiting for secret foundation-iaf-automationbase-ab-ss-ca in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
   sleep 60
