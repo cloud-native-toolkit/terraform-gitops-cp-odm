@@ -145,7 +145,7 @@ until kubectl get secret foundation-iaf-automationbase-ab-ss-ca -n "${NAMESPACE}
   sleep 60
 done
 
-if [[ $count -eq 20 ]]; then
+if [[ $count -eq 60 ]]; then
   echo "Timed out waiting for foundation-iaf-automationbase-ab-ss-ca in ${NAMESPACE}"
   exit 1
 fi
