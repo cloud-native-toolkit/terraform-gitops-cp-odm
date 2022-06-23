@@ -161,6 +161,12 @@ variable "registry_key_name" {
   description = "registry_key_name"  
 }
 
+variable "entitlement_key_name" {
+  type        = string
+  default="ibm-entitlement-key"
+  description = "entitlement_key_name"  
+}
+
 variable "login_token" {
   type        = string
    default = ""

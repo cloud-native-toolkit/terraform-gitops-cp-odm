@@ -23,5 +23,5 @@ module "gitops_entitle_pull_secret" {
    docker_server = var.docker_server
    docker_username = var.docker_username
    docker_password = var.cp_entitlement_key
-   secret_name    = "ibm-entitlement-key"
+   secret_name    = var.entitlement_key_name
 }

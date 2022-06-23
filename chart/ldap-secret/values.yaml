@@ -1,4 +1,4 @@
 odmldapsecret:
  namespace: gitops-cp-odm
- ldapUsername: Y249cm9vdA==  #cn=root
+ ldapUsername: Y3BhZG1pbg== #cpadmin #Y249cm9vdA==  #cn=root
  ldapPassword: UEBzc3cwcmQ=   #P@ssw0rd

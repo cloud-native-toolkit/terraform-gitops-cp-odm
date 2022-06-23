@@ -6,7 +6,7 @@ module "gitops_cb4ba_operator" {
   server_name = module.gitops.server_name
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
-  storageclass_operator= "portworx-db2-rwx-sc"
+  storageclass_operator= var.storageclass_fast
  }
  
  
