@@ -133,7 +133,7 @@ variable "db_password" {
 variable "ldapUsername" {
   type        = string
   description = "Database User"
-  default = "Y249cm9vdA=="
+  default = "Y3BhZG1pbg==" #cpadmin
   sensitive   = true
 }
 
