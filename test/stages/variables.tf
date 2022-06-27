@@ -203,7 +203,6 @@ variable "storageclass_slow" {
 variable "storageclass_block" {
   type        = string
   #default="cp4a-file-retain-gold-gid"
-  #default="ibmc-vpc-block-metro-retain-10iops-tier"
   default="ibmc-vpc-block-metro-retain-10iops-tier"
   description = "The storge class for operator pvc"
 }
