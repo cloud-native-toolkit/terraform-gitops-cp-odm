@@ -82,19 +82,6 @@ else
   sleep 30
 fi
 
-#DEPLOYMENT="${COMPONENT_NAME}-${BRANCH}"
-#count=0
-#until kubectl get deployment "${DEPLOYMENT}" -n "${NAMESPACE}" || [[ $count -eq 20 ]]; do
- # echo "Waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
- # count=$((count + 1))
- # sleep 15
-#done
-
-#if [[ $count -eq 20 ]]; then
- # echo "Timed out waiting for deployment/${DEPLOYMENT} in ${NAMESPACE}"
- # kubectl get all -n "${NAMESPACE}"
- # exit 1
-#fi
 
 ## Check if the icp4a-root-ca is there 
 count=0
@@ -164,8 +151,6 @@ count=0
 echo "Sleeping for 10 minutes after finding the subscription to manually verify"
 sleep 1200
 
-
-#kubectl rollout status "deployment/${DEPLOYMENT}" -n "${NAMESPACE}" || exit 1
 
 cd ..
 rm -rf .testrepo
