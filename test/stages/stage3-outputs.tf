@@ -10,7 +10,7 @@ resource null_resource write_outputs {
         namespace   = module.cp4ba.namespace
         server_name = module.cp4ba.server_name
         layer       = module.cp4ba.layer
-        layer_dir   = module.cp4ba.layer == "infrastructure" ? "1-infrastructure" : (module.cp-odm.layer == "services" ? "2-services" : "3-applications")
+        layer_dir   = module.cp4ba.layer == "infrastructure" ? "1-infrastructure" : (module.cp-cp4ba.layer == "services" ? "2-services" : "3-applications")
         type        = module.cp4ba.type
       })
     }

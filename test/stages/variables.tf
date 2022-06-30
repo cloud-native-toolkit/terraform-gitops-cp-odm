@@ -23,7 +23,7 @@ variable "bootstrap_prefix" {
 variable "namespace" {
   type        = string
   description = "Namespace for tools" 
-  default ="cp-odm"
+  default ="cp-cp4ba"
   #default ="odm-inst"
 
 }
