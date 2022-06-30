@@ -1,19 +1,20 @@
 
-resource null_resource write_outputs {
+/*resource null_resource write_outputs {
   provisioner "local-exec" {
     command = "echo \"$${OUTPUT}\" > gitops-output.json"
 
     environment = {
       OUTPUT = jsonencode({
-        name        = module.cp4ba.name
-        branch      = module.cp4ba.branch
-        namespace   = module.cp4ba.namespace
-        server_name = module.cp4ba.server_name
-        layer       = module.cp4ba.layer
-        layer_dir   = module.cp4ba.layer == "infrastructure" ? "1-infrastructure" : (module.cp-cp4ba.layer == "services" ? "2-services" : "3-applications")
-        type        = module.cp4ba.type
+        name        = module.cp-odm.name
+        branch      = module.cp-odm.branch
+        namespace   = module.cp-odm.namespace
+        server_name = module.cp-odm.server_name
+        layer       = module.cp-odm.layer
+        layer_dir   = module.cp-odm.layer == "infrastructure" ? "1-infrastructure" : (module.cp-odm.layer == "services" ? "2-services" : "3-applications")
+        type        = module.cp-odm.type
       })
     }
   }
 }
 
+*/
