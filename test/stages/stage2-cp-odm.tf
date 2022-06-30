@@ -1,4 +1,4 @@
-module "cp-odm" {
+/*module "cp-odm" {
   source = "./module"
 
   gitops_config = module.gitops.gitops_config
@@ -9,3 +9,5 @@ module "cp-odm" {
   //cp4ba_operator_namesapce=module.gitops_cb4ba_operator.namespace
 
 }
+
+*/
