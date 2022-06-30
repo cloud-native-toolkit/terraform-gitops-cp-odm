@@ -3,8 +3,8 @@ locals {
   bin_dir       = module.setup_clis.bin_dir
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart"
   odm_yaml_dir = "${local.yaml_dir}/cp4ba-odm"
-  db_yaml_dir = "${local.yaml_dir}/db-secret"
-  ldap_yaml_dir = "${local.yaml_dir}/db-ldap"
+  //db_yaml_dir = "${local.yaml_dir}/db-secret"
+  //ldap_yaml_dir = "${local.yaml_dir}/db-ldap"
 
   chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
@@ -29,7 +29,7 @@ locals {
         storageclass_medium: "portworx-db2-rwx-sc"
         storageclass_slow: "portworx-db2-rwx-sc"
     }  
-  "odmdbsecret"={
+  /*"odmdbsecret"={
         namespace= var.namespace
         db_user= var.db_user
         db_password= var.db_password
@@ -38,7 +38,7 @@ locals {
         namespace= var.namespace
         ldapUsername= var.ldapUsername
         ldapPassword= var.ldapPassword
-    } 
+    } */
   values_file = "values-${var.server_name}.yaml"  
   }
 
@@ -97,7 +97,7 @@ resource null_resource setup_gitops {
 }
 
 # Create DB Secret 
-resource null_resource create_dbyaml {
+/*resource null_resource create_dbyaml {
   provisioner "local-exec" {
     command = "${path.module}/scripts/create-dbyaml.sh '${local.chart_dir}' '${local.db_yaml_dir}'"
 
@@ -191,3 +191,4 @@ resource null_resource setup_gitops_ldap {
   }
 
 }
+*/
