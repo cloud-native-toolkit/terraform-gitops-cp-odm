@@ -1,5 +1,5 @@
 
-/*resource null_resource write_outputs {
+resource null_resource write_outputs {
   provisioner "local-exec" {
     command = "echo \"$${OUTPUT}\" > gitops-output.json"
 
@@ -17,4 +17,3 @@
   }
 }
 
-*/
