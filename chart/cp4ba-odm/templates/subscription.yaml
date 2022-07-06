@@ -28,7 +28,7 @@ spec:
       dc_common_database_port: "{{ .Values.cp4ba.odm_db_port }}"
       dc_common_ssl_enabled: false
       dc_database_type: {{ .Values.cp4ba.odm_db_type }}
-      dc_ssl_secret_name: {{ .Values.cp4ba.odm_db_secret }}
+     # dc_ssl_secret_name: {{ .Values.cp4ba.odm_db_secret }}
   ibm_license: accept
   initialize_configuration: 
     ic_ldap_creation: 
@@ -91,9 +91,9 @@ spec:
     #sc_ingress_tls_secret_name: <Required>
     sc_optional_components: "bai,decisionCenter,decisionRunner,decisionServerRuntime"
     storage_configuration: 
-      sc_block_storage_classname: {{ .Values.cp4ba.storageclass_block}}
-      sc_fast_file_storage_classname: {{ .Values.cp4ba.storageclass}}
-      sc_medium_file_storage_classname: {{ .Values.cp4ba.storageclass}}
-      sc_slow_file_storage_classname: {{ .Values.cp4ba.storageclass}}
+      sc_block_storage_classname: "ibmc-vpc-block-10iops-tier"
+      sc_fast_file_storage_classname: "ocs-storagecluster-cephfs"
+      sc_medium_file_storage_classname: "ocs-storagecluster-cephfs"
+      sc_slow_file_storage_classname: "ocs-storagecluster-cephfs"
     trusted_certificate_list: []
     
