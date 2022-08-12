@@ -3,8 +3,6 @@ locals {
   bin_dir       = module.setup_clis.bin_dir
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart"
   odm_yaml_dir = "${local.yaml_dir}/cp4ba-odm"
-  db_yaml_dir = "${local.yaml_dir}/db-secret"
-  ldap_yaml_dir = "${local.yaml_dir}/db-ldap"
 
   chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
