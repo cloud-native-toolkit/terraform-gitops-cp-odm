@@ -130,20 +130,6 @@ variable "db_password" {
   sensitive   = true
 }
 
-variable "ldapUsername" {
-  type        = string
-  description = "Database User"
-  default = "Y3BhZG1pbg==" #cpadmin
-  sensitive   = true
-}
-
-variable "ldapPassword" {
-  type        = string
-  description = "The namespace where the application should be deployed"
-  default = "UEBzc3cwcmQ="
-  sensitive   = true
-}
-
 variable "docker_username" {
   type        = string
   default="cp"
