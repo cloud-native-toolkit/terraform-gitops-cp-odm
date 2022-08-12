@@ -167,10 +167,10 @@ variable "entitlement_key_name" {
   description = "entitlement_key_name"  
 }
 
-variable "login_token" {
+/*variable "login_token" {
   type        = string
    default = ""
-}
+}*/
 variable "ibmcloud_api_key" {
   type        = string
    default = ""
