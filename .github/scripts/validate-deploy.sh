@@ -85,8 +85,8 @@ fi
 
 ## Check if the icp4a-root-ca is there 
 count=0
-until kubectl get secret icp4a-root-ca -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
-  echo "Waiting for secret icp4a-root-ca in ${NAMESPACE} COUNTER $count" 
+until kubectl get secret icp4adeploy-root-ca -n "${NAMESPACE}" || [[ $count -eq 60 ]]; do
+  echo "Waiting for secret icp4adeploy-root-ca in ${NAMESPACE} COUNTER $count" 
   count=$((count + 1))
   sleep 60
 done
