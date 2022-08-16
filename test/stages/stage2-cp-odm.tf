@@ -7,6 +7,5 @@ module "cp-odm" {
   namespace = module.gitops_namespace.name
   kubeseal_cert = module.gitops.sealed_secrets_cert
   //cp4ba_operator_namesapce=module.gitops_cb4ba_operator.namespace
-
 }
 
