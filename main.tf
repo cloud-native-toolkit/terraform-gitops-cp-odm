@@ -41,7 +41,7 @@ resource null_resource create_yaml {
     command = "${path.module}/scripts/create-yaml.sh '${local.chart_dir}' '${local.yaml_dir}'"
 
     environment = {
-      VALUES_CONTENT = yamlencode(local.values_content)
+    //  VALUES_CONTENT = yamlencode(local.values_content)
     }
   }
 }
