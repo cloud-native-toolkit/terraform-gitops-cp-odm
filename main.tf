@@ -2,7 +2,7 @@ locals {
   name          = "cp-odm"
   bin_dir       = module.setup_clis.bin_dir
   yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart"
-  odm_yaml_dir = "${local.yaml_dir}/cp4ba-odm"
+  //odm_yaml_dir = "${local.yaml_dir}/cp4ba-odm"
 
   chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
@@ -11,8 +11,8 @@ locals {
   application_branch = "main"
   namespace = var.namespace
   layer_config = var.gitops_config[local.layer]
-  db_port="${var.odm_db_port}"
-  values_content = {
+  //db_port="${var.odm_db_port}"
+ /* values_content = {
   "cp4ba" = {        
         namespace= var.namespace
         db_server= "161.202.168.37"
@@ -28,7 +28,7 @@ locals {
         storageclass_slow: var.storageclass
     }  
   values_file = "values-${var.server_name}.yaml"  
-  }
+  }*/
 
 }
 
@@ -38,7 +38,7 @@ module setup_clis {
 
 resource null_resource create_yaml {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/create-yaml.sh '${local.chart_dir}' '${local.odm_yaml_dir}'"
+    command = "${path.module}/scripts/create-yaml.sh '${local.chart_dir}' '${local.yaml_dir}'"
 
     environment = {
       VALUES_CONTENT = yamlencode(local.values_content)
@@ -54,7 +54,7 @@ resource null_resource setup_gitops {
     #name = local.name
     name = local.name
     namespace = var.namespace
-    yaml_dir = local.odm_yaml_dir
+    yaml_dir = local.yaml_dir
     server_name = var.server_name
     layer = local.layer
     type = local.type
