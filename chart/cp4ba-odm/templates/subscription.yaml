@@ -38,6 +38,7 @@ spec:
   shared_configuration: 
     image_pull_secrets: 
       - admin.registrykey
+      - ibm-entitlement-key
     images: 
       dbcompatibility_init_container: 
         repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
