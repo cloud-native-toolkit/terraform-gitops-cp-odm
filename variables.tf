@@ -160,7 +160,6 @@ variable "storageclass" {
 
 variable "storageclass_block" {
   type        = string
-  #default="ibmc-vpc-block-metro-retain-10iops-tier"
   default="ibmc-vpc-block-10iops-tier"
   description = "The storge class for operator pvc"
 }
