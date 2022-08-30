@@ -6,10 +6,10 @@ metadata:
     app.kubernetes.io/instance: ibm-dba
     app.kubernetes.io/managed-by: ibm-dba
     app.kubernetes.io/name: ibm-dba
-    release: "21.0.3"
+    release: "22.0.1"
   name: icp4adeploy
 spec: 
-  appVersion: "21.0.3"
+  appVersion: "22.0.1"
   bai_configuration: 
     business_performance_center: 
       all_users_access: true
@@ -19,7 +19,7 @@ spec:
   navigator_configuration: 
     image: 
       repository: cp.icr.io/cp/cp4a/ban/navigator
-      tag: 21.0.3-IF009
+      tag: "22.0.1"
   odm_configuration: 
     decisionCenter: 
       enabled: true
@@ -28,33 +28,32 @@ spec:
     decisionServerRuntime: 
       enabled: true
     image: 
-      pullSecrets: admin.registrykey
+      pullSecrets: ibm-entitlement-key
       repository: cp.icr.io/cp/cp4a/odm
   resource_registry_configuration: 
     images: 
       resource_registry: 
         repository: cp.icr.io/cp/cp4a/aae/dba-etcd
-        tag: 21.0.3-IF009
+        tag: "22.0.1"
   shared_configuration: 
     image_pull_secrets: 
-      - admin.registrykey
       - ibm-entitlement-key
     images: 
       dbcompatibility_init_container: 
         repository: cp.icr.io/cp/cp4a/aae/dba-dbcompatibility-initcontainer
-        tag: 21.0.3-IF009
+        tag: "22.0.1"
       keytool_init_container: 
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-initcontainer
-        tag: 21.0.3-IF009
+        tag: "22.0.1"
       keytool_job_container: 
         repository: cp.icr.io/cp/cp4a/ums/dba-keytool-jobcontainer
-        tag: 21.0.3-IF009
+        tag: "22.0.1"
       openldap: 
         repository: cp.icr.io/cp/cp4a/demo/openldap
-        tag: "1.5.0"
+        tag: "1.5.0.1"
       umsregistration_initjob: 
         repository: cp.icr.io/cp/cp4a/aae/dba-umsregistration-initjob
-        tag: 21.0.3-IF009
+        tag: "22.0.1"
     sc_cpe_limited_storage: false
     sc_deployment_baw_license: non-production
     sc_deployment_fncm_license: non-production
@@ -62,6 +61,7 @@ spec:
     sc_deployment_patterns: "foundation,decisions"
     sc_deployment_platform: ROKS
     sc_deployment_type: Starter
+    sc_drivers_url: ~
     sc_image_repository: cp.icr.io
     sc_ingress_enable: false
     sc_optional_components: "bai,decisionCenter,decisionRunner,decisionServerRuntime"
