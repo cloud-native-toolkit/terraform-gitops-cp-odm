@@ -1,15 +1,35 @@
 locals {
-  name          = "my-module"
+  name          = "cp-odm"
   bin_dir       = module.setup_clis.bin_dir
-  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart/${local.name}"
+  yaml_dir      = "${path.cwd}/.tmp/${local.name}/chart"
+  //odm_yaml_dir = "${local.yaml_dir}/cp4ba-odm"
+
+  chart_dir = "${path.module}/chart"
   service_url   = "http://${local.name}.${var.namespace}"
-  values_content = {
-  }
   layer = "services"
   type  = "base"
   application_branch = "main"
   namespace = var.namespace
   layer_config = var.gitops_config[local.layer]
+  //db_port="${var.odm_db_port}"
+ /* values_content = {
+  "cp4ba" = {        
+        namespace= var.namespace
+        db_server= "161.202.168.37"
+        odm_db_name= var.odm_db_name
+        odm_db_port= var.odm_db_port
+        odm_db_type= var.odm_db_type
+        odm_image_repository= var.odm_image_repository
+        odm_image_tag= var.odm_image_tag
+        odm_image_version= var.odm_image_version
+        storageclass_block: var.storageclass_block
+        storageclass_fast: var.storageclass
+        storageclass_medium: var.storageclass
+        storageclass_slow: var.storageclass
+    }  
+  values_file = "values-${var.server_name}.yaml"  
+  }*/
+
 }
 
 module setup_clis {
@@ -18,18 +38,20 @@ module setup_clis {
 
 resource null_resource create_yaml {
   provisioner "local-exec" {
-    command = "${path.module}/scripts/create-yaml.sh '${local.name}' '${local.yaml_dir}'"
+    command = "${path.module}/scripts/create-yaml.sh '${local.chart_dir}' '${local.yaml_dir}'"
 
     environment = {
-      VALUES_CONTENT = yamlencode(local.values_content)
+    //  VALUES_CONTENT = yamlencode(local.values_content)
     }
   }
 }
+
 
 resource null_resource setup_gitops {
   depends_on = [null_resource.create_yaml]
 
   triggers = {
+    #name = local.name
     name = local.name
     namespace = var.namespace
     yaml_dir = local.yaml_dir
@@ -40,6 +62,7 @@ resource null_resource setup_gitops {
     gitops_config   = yamlencode(var.gitops_config)
     bin_dir = local.bin_dir
   }
+
 
   provisioner "local-exec" {
     command = "${self.triggers.bin_dir}/igc gitops-module '${self.triggers.name}' -n '${self.triggers.namespace}' --contentDir '${self.triggers.yaml_dir}' --serverName '${self.triggers.server_name}' -l '${self.triggers.layer}' --type '${self.triggers.type}'"
@@ -60,3 +83,4 @@ resource null_resource setup_gitops {
     }
   }
 }
+

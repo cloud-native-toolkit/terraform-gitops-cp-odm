@@ -21,3 +21,4 @@ resource null_resource gitops_output {
     command = "echo -n '${module.gitops.config_token}' > git_token"
   }
 }
+
